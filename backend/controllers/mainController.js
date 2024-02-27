@@ -13,4 +13,18 @@ const allProducts = asyncHandler(async(req, res) => {
     }
 })
 
-module.exports = {allProducts}
+//function to get details of specific product
+const productDetails = asyncHandler(async(req, res) => {
+    const { id } = req.body
+
+    try{
+        const product = await productModel.findOne({ _id: id })
+        res.send(product)
+        console.log(product)
+    }
+    catch(err) {
+        console.log(err)
+    }
+})
+
+module.exports = { allProducts, productDetails }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { allProducts } from "../../utils/backendAPI"
 import EachProductTab from '../Components/EachProductTab'
+import '../styles/allProductContainer.css'
 
 function AllProductPage() {
-    // eslint-disable-next-line no-unused-vars
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -22,14 +22,22 @@ function AllProductPage() {
     }, [])
 
     const showProductsFunction = () => {
-        return products.map((items) => (
-            <EachProductTab key={items._id} productName={items.productName} productPrice={items.productPrice} productStock={items.productStock}/>
-        ));
-    }
-
+        return products.map((items) => {
+    
+            return (
+                <EachProductTab
+                    key={items._id}
+                    productName={items.productName}
+                    productPrice={items.productPrice}
+                    productImg={items.productImg}
+                />
+            );
+        });
+    };
+    
     return (
         <>
-        <div>
+        <div className="allProductContainer">
             {showProductsFunction()}
         </div>
         </>

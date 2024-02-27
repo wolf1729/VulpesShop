@@ -10,4 +10,7 @@ router.get('/cart', (req, res) => {
     res.send('Cart API')
 })
 
+//get each product details API
+router.get('/productDetails', productController.productDetails)
+
 module.exports = router
