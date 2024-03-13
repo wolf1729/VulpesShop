@@ -13,4 +13,6 @@ router.get('/cart', (req, res) => {
 //get each product details API
 router.get('/productDetails', productController.productDetails)
 
+router.post('/addNewProduct', productController.addProductToDatabase)
+
 module.exports = router

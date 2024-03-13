@@ -4,6 +4,7 @@ import SellerLoginPage from "../Components/sellerLoginPage";
 import BuyerLoginPage from "../Components/buyerLoginPage";
 import SellerSignupPage from "../Components/sellerSignupPage";
 import BuyerSignupPage from "../Components/buyerSignupPage";
+import SellerDashboardPage from "../Components/sellerDashboardPage";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const Router = () => {
         {
             path: '/buyerSignup',
             element: <BuyerSignupPage />
+        },
+        {
+            path: '/sellerDashboard',
+            element: <SellerDashboardPage />
         }
     ]);
 

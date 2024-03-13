@@ -1,13 +1,11 @@
-const express = require('express')
-const sellerAuthRouter = express.Router()
+const express = require('express');
 const sellerAuthController = require('../controllers/sellerAuthController')
+const sellerAuthRouter = express.Router();
 
-//API to Sign up
+//Route to add new seller
 sellerAuthRouter.post('/sign-up', sellerAuthController.addNewSeller)
 
-//API to Login
-sellerAuthRouter.get('/', (req, res) => {
-    res.send('Login Pae')
-})
+//Route to login the existing seller
+sellerAuthRouter.post('/login', sellerAuthController.loginExistingSeller)
 
-module.exports = sellerAuthRouter
+module.exports = sellerAuthRouter;

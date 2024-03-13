@@ -1,11 +1,7 @@
-const express = require('express')
-const app = express()
 const sellerAuthModel = require('../models/sellerModel')
 const asyncHandler = require('express-async-handler')
-const session = require('express-session')
-const passport = require('passport')
-const LocalStrategy = require('passport-local')
 
+//controller to add new seller user
 const addNewSeller = asyncHandler( async(req, res) => {
     const { username, password } = req.body
     try{
@@ -25,45 +21,28 @@ const addNewSeller = asyncHandler( async(req, res) => {
     }
 })
 
-
-//Authentication functions
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }))
-
-//function to check username and password from the database
-passport.use(new LocalStrategy(async (username, password, done) => {
+//Controller to get login details of the existing user
+const loginExistingSeller = asyncHandler( async(req, res) => {
+    const { username, password } = req.body
     try{
-        const user = await sellerModel.findOne({ username: username })
-        if(!user) {
-            return done(null, false, { message: "Incorrect username" })
+        const userDetails = await sellerAuthModel.findOne({ username: username })
+        
+        if (userDetails.password === password ){
+            res.send(userDetails)
+            console.log(userDetails)
         }
-        if(user.password !== password) {
-            return done(null, false, { message: "Incorrect Password" })
+        else {
+            res.send('Email or Password is wrong')
         }
-        return done(null, user);
     }
     catch(err) {
-        console.log(err)
-    }
-}))
-
-//serializeUser takes a callback which contains the info we wish to store in the session data
-passport.serializeUser((user, done) => {
-    done(null, user.id)
-})
-
-//deserializeUser is called when retrieving a session, where it will extract the data we "serialized" in it
-passport.deserializeUser(async (id, done) => {
-    try{
-        const user = await sellerModel.findById(id)
-        done(null, user)
-    }
-    catch(err) {
-        done(err)
+        console.log('Error in Fetching details')
     }
 })
 
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(express.urlencoded({ extended: false }))
+//Function to add the product id to the seller data
+const addProductIdToSellerData = asyncHandler( async(req, res) => {
 
-module.exports = { addNewSeller }
+})
+
+module.exports = { addNewSeller, loginExistingSeller, addProductIdToSellerData }

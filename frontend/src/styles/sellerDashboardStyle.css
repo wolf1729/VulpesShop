@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Kode+Mono:wght@400..700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.top{
+    width: 100vw;
+    background-color: #FF4742;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.greeting{
+    color: white;
+    margin: 10px;
+    font-family: 'Anta';
+    font-size: 20px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+}
+
+.logoutButton, .addProductButton{
+    margin-right: 50px;
+}
+
+.logoutButton {
+    background: violet;
+    border: 1px solid violet;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Kode Mono';
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+  
+.logoutButton:hover, .sellerButton:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: violet;
+}
+  
+.logoutButton:active {
+    opacity: .5;
+}
+
+.addProductButton {
+    background: #F4E603;
+    border: 1px solid #F4E603;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Kode Mono';
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+  
+.addProductButton:hover, .sellerButton:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #F4E603;
+}
+  
+.addProductButton:active {
+    opacity: .5;
+}
