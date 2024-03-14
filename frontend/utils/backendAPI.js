@@ -12,4 +12,26 @@ const allProducts = async() => {
     }
 }
 
-export { allProducts }
+const addProductAPI = async(name, price, image) => {
+    try{
+        const response = await fetch(`${baseURL}/addNewProduct`, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: name,
+                price: price,
+                image: image
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await response.json()
+        console.log(data)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+export { allProducts, addProductAPI }

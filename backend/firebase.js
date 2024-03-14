@@ -18,13 +18,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-async function uploadFileInStorage(filePath) {
+async function uploadFileInStorage(file, filename) {
   try {
-    const fileBuffer = require('fs').readFileSync(filePath);
-    const fileName = require('path').basename(filePath);
-
-    const storageRef = ref(storage, `products/${fileName}`);
-    await uploadBytes(storageRef, fileBuffer);
+    const storageRef = ref(storage, `products/${filename}`);
+    await uploadBytes(storageRef, file);
 
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL

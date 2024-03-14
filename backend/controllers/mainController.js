@@ -32,9 +32,7 @@ const productDetails = asyncHandler(async(req, res) => {
 const addProductToDatabase = asyncHandler( async(req, res) => {
     const { name, price, image } = req.body
 
-    const imageBuffer = fs.readFileSync(image);
-
-    let downloadURL = await firebaseFunction.uploadFileInStorage(imageBuffer)
+    let downloadURL = await firebaseFunction.uploadFileInStorage(image, name)
 
     const productDetail = {
         productName: name,
