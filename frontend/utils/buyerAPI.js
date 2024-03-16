@@ -8,8 +8,7 @@ const newBuyerSignUp = async(username, password) => {
             body: JSON.stringify({
                 username: username,
                 password: password,
-                cart: [],
-                purchased: []
+                cart: []
             }),
 
             headers: {
@@ -24,4 +23,27 @@ const newBuyerSignUp = async(username, password) => {
     }
 }
 
-export { newBuyerSignUp }
+//Getting existing user details
+const existingBuyerUserDetails = async(username, password) => {
+    try{
+        const response = await fetch(`${baseURL}/buyerAuth/login`, {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await response.json()
+        console.log(data)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+
+export { newBuyerSignUp, existingBuyerUserDetails }

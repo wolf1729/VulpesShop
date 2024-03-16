@@ -30,14 +30,15 @@ const productDetails = asyncHandler(async(req, res) => {
 
 //Function to add product to the database
 const addProductToDatabase = asyncHandler( async(req, res) => {
-    const { name, price, image } = req.body
+    const { name, price, image, sellerId } = req.body
 
     let downloadURL = await firebaseFunction.uploadFileInStorage(image, name)
 
     const productDetail = {
         productName: name,
         productImg: downloadURL || '',
-        productPrice: price
+        productPrice: price,
+        seller: sellerId
     };
 
     try {

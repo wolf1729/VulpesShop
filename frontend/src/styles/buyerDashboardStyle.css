@@ -6,7 +6,7 @@
     padding: 0px;
 }
 
-.top{
+.buyertop{
     width: 100vw;
     background-color: white;
     display: flex;
@@ -17,14 +17,14 @@
     height: 80px;
 }
 
-.greeting{
+.buyergreeting{
     color: black;
     margin: 10px;
     font-family: 'Anta';
     font-size: 20px;
 }
 
-.buttonContainer{
+.buyerbuttonContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,11 +32,11 @@
     align-items: center;
 }
 
-.logoutButton, .addProductButton{
+.buyerlogoutButton, .buyercartButton{
     margin-right: 20px;
 }
 
-.logoutButton {
+.buyerlogoutButton {
     background: #FF4742;
     border: 1px solid #FF4742;
     border-radius: 6px;
@@ -61,19 +61,19 @@
     vertical-align: middle;
 }
   
-.logoutButton:hover, .sellerButton:active {
+.buyerlogoutButton:hover, .sellerButton:active {
     background-color: initial;
     background-position: 0 0;
     color: #FF4742;
 }
   
-.logoutButton:active {
+.buyerlogoutButton:active {
     opacity: .5;
 }
 
-.addProductButton {
-    background: #2C974B;
-    border: 1px solid #2C974B;
+.buyercartButton {
+    background: #405CF5;
+    border: 1px solid #405CF5;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
     box-sizing: border-box;
@@ -96,12 +96,12 @@
     vertical-align: middle;
 }
   
-.addProductButton:hover, .sellerButton:active {
+.buyercartButton:hover, .sellerButton:active {
     background-color: initial;
     background-position: 0 0;
-    color: #2C974B;
+    color: #405CF5;
 }
   
-.addProductButton:active {
+.buyercartButton:active {
     opacity: .5;
 }

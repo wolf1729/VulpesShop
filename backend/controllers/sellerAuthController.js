@@ -42,7 +42,28 @@ const loginExistingSeller = asyncHandler( async(req, res) => {
 
 //Function to add the product id to the seller data
 const addProductIdToSellerData = asyncHandler( async(req, res) => {
+    const { id, productId } = req.body
 
+    try{
+        const result = await sellerAuthModel.updateOne(
+            { _id: id }, // Filter criteria
+            { $push: { product: productId } } // Update operation
+          );
+      
+          // Check if the update was successful
+          if (result.nModified === 1) {
+            console.log('Element added to the array.');
+            res.send('added')
+            return true;
+          } else {
+            console.log('Element was not added to the array.');
+            res.send('not added')
+            return false;
+          }
+    }
+    catch(err) {
+        console.log(err)
+    }
 })
 
 module.exports = { addNewSeller, loginExistingSeller, addProductIdToSellerData }

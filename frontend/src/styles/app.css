@@ -22,7 +22,7 @@
     margin: 100px;
 }
 
-.buttonContainer{
+.mainPageButtonContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

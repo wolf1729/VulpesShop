@@ -12,14 +12,15 @@ const allProducts = async() => {
     }
 }
 
-const addProductAPI = async(name, price, image) => {
+const addProductAPI = async(name, price, image, sellerId) => {
     try{
         const response = await fetch(`${baseURL}/addNewProduct`, {
             method: 'POST',
             body: JSON.stringify({
                 name: name,
                 price: price,
-                image: image
+                image: image,
+                sellerId: sellerId
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

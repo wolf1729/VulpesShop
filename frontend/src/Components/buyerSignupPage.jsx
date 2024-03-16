@@ -28,7 +28,7 @@ function BuyerSignupPage() {
         <div className='buyer-container'>
             <div className="buyer-login-page">
                 <div className="buyer-form">
-                    <form className="buyer-login-form">
+                    <form className="buyer-login-form" onSubmit={e=> e.preventDefault()}>
                         <input type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
                         <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <button onClick={() => makeNewUser()}>Create</button>

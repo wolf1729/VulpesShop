@@ -11,7 +11,7 @@ function App() {
     <>
       <div className="mainContainer">
         <h1 className="heading">Vulpes Shop</h1>
-        <div className="buttonContainer">
+        <div className="mainPageButtonContainer">
           <button className="sellerButton" onClick={() => navigationFunction('/sellerLogin')}>Seller Login</button>
           <button className="buyerButton" onClick={() => navigationFunction('/buyerLogin')}>Buyer Login</button>
         </div>

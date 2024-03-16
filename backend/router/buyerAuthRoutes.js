@@ -6,8 +6,6 @@ const buyerAuthController = require('../controllers/buyerAuthController')
 buyerAuthRouter.post('/sign-up', buyerAuthController.addNewBuyer)
 
 //API to Login
-buyerAuthRouter.get('/', (req, res) => {
-    res.send('Login Pae')
-})
+buyerAuthRouter.post('/login', buyerAuthController.loginExistingBuyer)
 
 module.exports = buyerAuthRouter

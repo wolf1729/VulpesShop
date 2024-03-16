@@ -45,4 +45,26 @@ const existingUserDetails = async(username, password) => {
     }
 }
 
-export { newSellerSignUp, existingUserDetails }
+//Adding the product id to database
+const addProductId = async(id, productId) => {
+    try{
+        const response = await fetch(`${baseURL}/sellerAuth/addProductId`, {
+            method: 'POST',
+            body: JSON.stringify({
+                id: id,
+                productId: productId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await response.json()
+        console.log(data)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+export { newSellerSignUp, existingUserDetails, addProductId }

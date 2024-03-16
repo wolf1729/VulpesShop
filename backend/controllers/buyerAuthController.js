@@ -1,19 +1,14 @@
-const express = require('express')
-const app = express()
 const buyerAuthModel = require('../models/buyerModel')
 const asyncHandler = require('express-async-handler')
-const session = require('express-session')
-const passport = require('passport')
-const LocalStrategy = require('passport-local')
 
+//Controller to add new buyer details to database
 const addNewBuyer = asyncHandler( async(req, res) => {
     const { username, password } = req.body
     try{
         const userDetails = {
             username: username,
             password: password,
-            cart: [],
-            purchased: []
+            cart: []
         }
         
         const newUser = new buyerAuthModel(userDetails);
@@ -26,4 +21,23 @@ const addNewBuyer = asyncHandler( async(req, res) => {
     }
 })
 
-module.exports = { addNewBuyer }
+//Controller to get login details of the existing user
+const loginExistingBuyer = asyncHandler( async(req, res) => {
+    const { username, password } = req.body
+    try{
+        const userDetails = await buyerAuthModel.findOne({ username: username })
+        
+        if (userDetails.password === password ){
+            res.send(userDetails)
+            console.log(userDetails)
+        }
+        else {
+            res.send('Email or Password is wrong')
+        }
+    }
+    catch(err) {
+        console.log('Error in Fetching details')
+    }
+})
+
+module.exports = { addNewBuyer, loginExistingBuyer }

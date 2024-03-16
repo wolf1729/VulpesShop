@@ -5,6 +5,8 @@ import BuyerLoginPage from "../Components/buyerLoginPage";
 import SellerSignupPage from "../Components/sellerSignupPage";
 import BuyerSignupPage from "../Components/buyerSignupPage";
 import SellerDashboardPage from "../Components/sellerDashboardPage";
+import BuyerDashboard from "../Components/buyerDashboard";
+import UserCartPage from "../Components/userCartPage";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -21,9 +23,6 @@ const Router = () => {
             element: <BuyerLoginPage />
         },
         {
-            path: "/product/:productId",
-        },
-        {
             path: '/sellerSignup',
             element: <SellerSignupPage />
         },
@@ -34,7 +33,16 @@ const Router = () => {
         {
             path: '/sellerDashboard',
             element: <SellerDashboardPage />
-        }
+        },
+        {
+            path: '/buyerDashboard',
+            element: <BuyerDashboard />
+        },
+        {
+            path: '/cartPage',
+            element: <UserCartPage />
+        },
+        
     ]);
 
     return <RouterProvider router={router} />
