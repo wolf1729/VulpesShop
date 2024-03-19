@@ -37,6 +37,26 @@ const existingBuyerUserDetails = async(username, password) => {
             }
         })
         const data = await response.json()
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+const addProductToCart = async(id, productId) => {
+    try{
+        const response = await fetch(`${baseURL}/buyerAuth/addProductToCart`, {
+            method: 'POST',
+            body: JSON.stringify({
+                id: id,
+                productId: productId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await response.json()
         console.log(data)
         return data
     }
@@ -45,5 +65,4 @@ const existingBuyerUserDetails = async(username, password) => {
     }
 }
 
-
-export { newBuyerSignUp, existingBuyerUserDetails }
+export { newBuyerSignUp, existingBuyerUserDetails, addProductToCart }

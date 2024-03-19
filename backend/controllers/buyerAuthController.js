@@ -40,4 +40,29 @@ const loginExistingBuyer = asyncHandler( async(req, res) => {
     }
 })
 
-module.exports = { addNewBuyer, loginExistingBuyer }
+const addProductToBuyerCart = asyncHandler( async(req, res) => {
+    const { id, productId } = req.body
+
+    try{
+        const result = await buyerAuthModel.updateOne(
+            { _id: id }, // Filter criteria
+            { $push: { cart: productId } } // Update operation
+          );
+      
+          // Check if the update was successful
+          if (result.nModified === 1) {
+            console.log('Element added to the cart.');
+            res.send('added')
+            return true;
+          } else {
+            console.log('Element was not added to the cart.');
+            res.send('not added')
+            return false;
+          }
+    }
+    catch(err) {
+        console.log(err)
+    }
+})
+
+module.exports = { addNewBuyer, loginExistingBuyer, addProductToBuyerCart }

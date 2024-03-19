@@ -18,7 +18,6 @@ function BuyerLoginPage() {
             let response = await existingBuyerUserDetails(username, password)
             setUserDetails(response)
             setCookie('user', response)
-            console.log(userDetails)
             navigationFunction('/buyerDashboard')
         }
         catch(err) {
