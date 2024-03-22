@@ -52,4 +52,30 @@ const addProductToDatabase = asyncHandler( async(req, res) => {
     }
 })
 
-module.exports = { allProducts, productDetails, addProductToDatabase }
+const getSellersProductDetails = asyncHandler(async(req, res) => {
+    const { productId } = req.body
+
+    try{
+        const sellerProducts = await productModel.findOne({ _id: productId })
+        res.send(sellerProducts)
+        console.log(sellerProducts)
+    }
+    catch(err) {
+        console.log(err)
+    }
+})
+
+const deleteProductfromMainDatabase = asyncHandler(async(req, res) => {
+    const { productId } = req.body
+
+    try{
+        const deleteTheProduct = await productModel.deleteOne({ _id: productId })
+        console.log('Item Deleted')
+    }
+    catch(err) {
+        console.log(err)
+        console.log('Item not deleted')
+    }
+})
+
+module.exports = { allProducts, productDetails, addProductToDatabase, getSellersProductDetails, deleteProductfromMainDatabase }

@@ -53,7 +53,7 @@ function BuyerDashboard() {
             <button className="buyerlogoutButton" onClick={handleLogout}>LogOut</button>
           </div>
         </div>
-        <div>
+        <div className='buyerProductContainer'>
           {showingAllProducts()}
         </div>
       </div>

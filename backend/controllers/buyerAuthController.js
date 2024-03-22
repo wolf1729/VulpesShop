@@ -44,21 +44,17 @@ const addProductToBuyerCart = asyncHandler( async(req, res) => {
     const { id, productId } = req.body
 
     try{
-        const result = await buyerAuthModel.updateOne(
-            { _id: id }, // Filter criteria
-            { $push: { cart: productId } } // Update operation
-          );
-      
-          // Check if the update was successful
-          if (result.nModified === 1) {
+        const result = await buyerAuthModel.updateOne({ _id: id }, { $push: { cart: productId } });
+        
+        if (result.nModified === 1) {
             console.log('Element added to the cart.');
             res.send('added')
             return true;
-          } else {
+        } else {
             console.log('Element was not added to the cart.');
             res.send('not added')
             return false;
-          }
+        }
     }
     catch(err) {
         console.log(err)

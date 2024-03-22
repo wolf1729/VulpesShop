@@ -35,4 +35,43 @@ const addProductAPI = async(name, price, image, sellerId) => {
     }
 }
 
-export { allProducts, addProductAPI }
+const getSellerProductsAPI = async(productId) => {
+    try{
+        const response = await fetch(`${baseURL}/getSellerProducts`, {
+            method: 'POST',
+            body: JSON.stringify({
+                productId: productId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await response.json()
+        console.log(data)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+//Delete product from the main database
+const deleteProduct = async(productId) => {
+    try{
+        await fetch(`${baseURL}/deleteProduct`, {
+            method: 'POST',
+            body: JSON.stringify({
+                productId: productId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        console.log('product deleted')
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+export { allProducts, addProductAPI, getSellerProductsAPI, deleteProduct }
