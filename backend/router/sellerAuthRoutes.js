@@ -11,4 +11,7 @@ sellerAuthRouter.post('/login', sellerAuthController.loginExistingSeller)
 //Route to put product id in seller database
 sellerAuthRouter.post('/addProductId', sellerAuthController.addProductIdToSellerData)
 
+//Route to delete the product id from the seller's database
+sellerAuthRouter.post('/deleteProductId', sellerAuthController.deleteProductId)
+
 module.exports = sellerAuthRouter;

@@ -2,6 +2,7 @@ import '../styles/eachProductContainer.css'
 import { useCookies } from 'react-cookie';
 import { addProductToCart } from '../../utils/buyerAPI';
 import { deleteProduct } from '../../utils/backendAPI';
+import { removeProductid } from '../../utils/sellerAPI';
 
 // eslint-disable-next-line react/prop-types
 function EachProductTab({ productName, productPrice, productImg, productId, isBuyer=true }) {
@@ -19,6 +20,7 @@ function EachProductTab({ productName, productPrice, productImg, productId, isBu
 
     const deleteingProductFunction = async(productId) => {
         try{
+            await removeProductid(user._id, productId)
             await deleteProduct(productId)
             console.log('Item deleted')
         }

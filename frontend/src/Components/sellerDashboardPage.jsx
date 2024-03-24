@@ -6,7 +6,7 @@ import AddProductModal from './addProductModal';
 import { getSellerProductsAPI } from '../../utils/backendAPI';
 import EachProductTab from '../Components/EachProductTab';
 
-//THINGS TO ADD TO SELLER DASHBOARD: logout, add-product, showing all products, delete the product
+//THINGS TO ADD TO SELLER DASHBOARD: add-product, showing all products, delete the product
 
 function SellerDashboardPage() {
   const [cookies, removeCookies] = useCookies(['user']);

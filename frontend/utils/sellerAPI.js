@@ -67,4 +67,27 @@ const addProductId = async(id, productId) => {
     }
 }
 
-export { newSellerSignUp, existingUserDetails, addProductId }
+//API call to delete the productId from the seller database
+const removeProductid = async(userId, productId) => {
+    try{
+        const response = await fetch(`${baseURL}/sellerAuth/deleteProductId`, {
+            method: 'POST',
+            body: JSON.stringify({
+                userId: userId,
+                productId: productId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await response.json()
+        console.log('item delete from both product database and seller database')
+        console.log(data)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+export { newSellerSignUp, existingUserDetails, addProductId, removeProductid }

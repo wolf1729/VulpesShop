@@ -66,4 +66,17 @@ const addProductIdToSellerData = asyncHandler( async(req, res) => {
     }
 })
 
-module.exports = { addNewSeller, loginExistingSeller, addProductIdToSellerData }
+//Delete the product Id from the seller database
+const deleteProductId = asyncHandler(async(req, res) => {
+    const { userId, productId } = req.body
+
+    try{
+        const deleteTheProductId = await sellerAuthModel.updateOne({ "_id": userId }, { $pull: { "product" : productId}})
+        console.log('productId Deleted')
+    }
+    catch(err) {
+        console.log(err)
+    }
+})
+
+module.exports = { addNewSeller, loginExistingSeller, addProductIdToSellerData, deleteProductId }
