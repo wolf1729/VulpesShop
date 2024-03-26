@@ -3,15 +3,17 @@ import { useCookies } from 'react-cookie';
 import { addProductToCart } from '../../utils/buyerAPI';
 import { deleteProduct } from '../../utils/backendAPI';
 import { removeProductid } from '../../utils/sellerAPI';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 function EachProductTab({ productName, productPrice, productImg, productId, isBuyer=true }) {
+    const navigate = useNavigate()
     const [cookies] = useCookies(['user']);
     const user = cookies.user
 
     const addProductToCartFunction = async () => {
         try {
-            await addProductToCart(productId, user._id);
+            await addProductToCart(user._id, productId);
             console.log('Product added to Cart');
         } catch (err) {
             console.log(err);
@@ -29,6 +31,10 @@ function EachProductTab({ productName, productPrice, productImg, productId, isBu
         }
     }
 
+    const navigationFunction = (e) => {
+        navigate(e)
+    }
+
     return (
         <div className='productCont'>
             <img src={productImg} alt="Image" className='productImgContainer' />
@@ -39,7 +45,7 @@ function EachProductTab({ productName, productPrice, productImg, productId, isBu
             <div className='buttonContainer'>
                 {isBuyer ? (
                     <>
-                        <button className='detailsButton'>Details</button>
+                        <button className='detailsButton' onClick={() => navigationFunction(`/productPage/${productId}`)}>Details</button>
                         <button className='cartButton' onClick={addProductToCartFunction}>Add To Cart</button>
                     </>
                 ) : (

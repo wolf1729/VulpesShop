@@ -8,20 +8,17 @@ function BuyerLoginPage() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     // eslint-disable-next-line no-unused-vars
-    const [userDetails, setUserDetails] = useState([])
-    // eslint-disable-next-line no-unused-vars
     const [cookies, setCookie] = useCookies(['user'])
     const navigate = useNavigate()
 
     const buyerLoginFunction = async() => {
         try{
             let response = await existingBuyerUserDetails(username, password)
-            setUserDetails(response)
             setCookie('user', response)
             navigationFunction('/buyerDashboard')
         }
         catch(err) {
-            console.log('User not found')
+            console.log(err)
         }
     }
 

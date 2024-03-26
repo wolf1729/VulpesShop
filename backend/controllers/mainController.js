@@ -16,10 +16,10 @@ const allProducts = asyncHandler(async(req, res) => {
 
 //function to get details of specific product
 const productDetails = asyncHandler(async(req, res) => {
-    const { id } = req.body
+    const { productId } = req.body
 
     try{
-        const product = await productModel.findOne({ _id: id })
+        const product = await productModel.findOne({ _id: productId })
         res.send(product)
         console.log(product)
     }

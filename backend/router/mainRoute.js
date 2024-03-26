@@ -5,6 +5,9 @@ const productController = require('../controllers/mainController')
 //API to get all products
 router.get('/', productController.allProducts)
 
+//get details of specific product
+router.post('/specificProduct', productController.productDetails)
+
 //API to add new products
 router.post('/addNewProduct', productController.addProductToDatabase)
 

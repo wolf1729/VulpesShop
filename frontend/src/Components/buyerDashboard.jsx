@@ -39,7 +39,7 @@ function BuyerDashboard() {
 
   const showingAllProducts = () => {
     return productArray.map((e) => (
-      <EachProductTab productImg={e.productImg} productName={e.productName} productPrice={e.productPrice} key={e._id}/>
+      <EachProductTab productImg={e.productImg} productName={e.productName} productPrice={e.productPrice} key={e._id} productId={e._id}/>
     ))
   }
 

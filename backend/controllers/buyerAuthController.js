@@ -31,9 +31,6 @@ const loginExistingBuyer = asyncHandler( async(req, res) => {
             res.send(userDetails)
             console.log(userDetails)
         }
-        else {
-            res.send('Email or Password is wrong')
-        }
     }
     catch(err) {
         console.log('Error in Fetching details')
@@ -45,16 +42,8 @@ const addProductToBuyerCart = asyncHandler( async(req, res) => {
 
     try{
         const result = await buyerAuthModel.updateOne({ _id: id }, { $push: { cart: productId } });
-        
-        if (result.nModified === 1) {
-            console.log('Element added to the cart.');
-            res.send('added')
-            return true;
-        } else {
-            console.log('Element was not added to the cart.');
-            res.send('not added')
-            return false;
-        }
+        res.end('product added')
+        console.log('product added')
     }
     catch(err) {
         console.log(err)

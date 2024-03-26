@@ -12,6 +12,27 @@ const allProducts = async() => {
     }
 }
 
+//api call to get details of specific product
+const getDetails = async(productId) => {
+    try{
+        const details = await fetch(`${baseURL}/specificProduct`, {
+            method: 'POST',
+            body: JSON.stringify({
+                productId: productId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        const data = await details.json()
+        console.log(data)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
 const addProductAPI = async(name, price, image, sellerId) => {
     try{
         const response = await fetch(`${baseURL}/addNewProduct`, {
@@ -74,4 +95,4 @@ const deleteProduct = async(productId) => {
     }
 }
 
-export { allProducts, addProductAPI, getSellerProductsAPI, deleteProduct }
+export { allProducts, addProductAPI, getSellerProductsAPI, deleteProduct, getDetails }

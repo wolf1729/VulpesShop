@@ -7,6 +7,7 @@ import BuyerSignupPage from "../Components/buyerSignupPage";
 import SellerDashboardPage from "../Components/sellerDashboardPage";
 import BuyerDashboard from "../Components/buyerDashboard";
 import UserCartPage from "../Components/userCartPage";
+import ProductPage from "../Components/productPage";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -42,7 +43,10 @@ const Router = () => {
             path: '/cartPage',
             element: <UserCartPage />
         },
-        
+        {
+            path: '/productPage/:productId',
+            element: <ProductPage />
+        }
     ]);
 
     return <RouterProvider router={router} />
